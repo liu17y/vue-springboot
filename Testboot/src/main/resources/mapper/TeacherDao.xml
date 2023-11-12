@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.testboot.dao.TeacherDao">
+
+    <resultMap type="com.example.testboot.entity.Teacher" id="TeacherMap">
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="idcard" column="Idcard" jdbcType="VARCHAR"/>
+        <result property="position" column="position" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="subject" column="subject" jdbcType="VARCHAR"/>
+        <result property="entryTime" column="entry_time" jdbcType="TIMESTAMP"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getTatol" resultType="java.lang.Integer">
+        select count(*) from teacher
+    </select>
+    <select id="TeacherAllInfo" resultMap="TeacherMap">
+        select * from teacher limit #{start},#{pageSize}
+    </select>
+
+
+</mapper>
+

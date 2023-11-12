@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.testboot.dao.SUserDao">
+
+    <resultMap type="com.example.testboot.entity.SUser" id="SUserMap">
+        <result property="idcard" column="IDcard" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+    </resultMap>
+    <insert id="insertUser" parameterType="com.example.testboot.entity.SUser">
+        insert into s_user(idcard, name, username, password, email, phone, address) values (#{idcard}, #{name},#{username}, #{password}, #{email}, #{phone}, #{address})
+    </insert>
+    <insert id="Insert" parameterType="com.example.testboot.entity.SUser">
+        insert into s_user(idcard, name, username, password, email, phone, address) values (#{idcard}, #{name}, #{username}, #{password}, #{email}, #{phone}, #{address})
+    </insert>
+    <insert id="addInfo" parameterType="com.example.testboot.entity.SUser">
+        insert into s_user(idcard, name, username, password, email, phone, address) values (#{idcard}, #{name}, #{username}, #{password}, #{email}, #{phone}, #{address})
+    </insert>
+    <insert id="registerInfo" parameterType="com.example.testboot.entity.SUser">
+        insert into s_user(idcard, name, username, password, email, phone, address) values (#{idcard}, #{name}, #{username}, #{password}, #{email}, #{phone}, #{address})
+    </insert>
+    <update id="updateById" parameterType="com.example.testboot.entity.SUser">
+        update `s_user`
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+        </set>
+        where IDcard = #{idcard}
+    </update>
+    <update id="updateId" parameterType="com.example.testboot.entity.SUser">
+        update s_user
+        <set>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="username != null">
+                username=#{username},
+            </if>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+        </set>
+        where IDcard=#{idcard}
+    </update>
+    <update id="updateStudent" parameterType="com.example.testboot.entity.SUser">
+        update s_user
+        <set>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="username != null">
+                username=#{username},
+            </if>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+        </set>
+        where IDcard=#{idcard}
+    </update>
+    <update id="updateByIdOne" parameterType="com.example.testboot.entity.SUser">
+        update s_user
+        <set>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="username != null">
+                username=#{username},
+            </if>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+        </set>
+        where IDcard=#{idcard}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from s_user where IDcard=#{idcard}
+    </delete>
+    <delete id="deleteOne" parameterType="java.lang.Integer">
+        delete from s_user where IDcard=#{idcard}
+    </delete>
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from s_user where IDcard=#{idcard}
+    </delete>
+    <select id="getAll" resultMap="SUserMap">
+        select * from s_user
+    </select>
+    <select id="getAllList" resultMap="SUserMap">
+        select * from s_user
+    </select>
+    <select id="getById" resultMap="SUserMap" parameterType="java.lang.Integer">
+        select * from s_user where IDcard=#{idcard}
+    </select>
+    <select id="search" resultType="com.example.testboot.entity.SUser" parameterType="java.lang.Integer">
+        select * from s_user where IDcard like concat('%',#{idcard},'%')
+    </select>
+    <select id="searchByIdcard" resultType="com.example.testboot.entity.SUser"
+            parameterType="java.lang.Integer">
+        select * from s_user where IDcard = #{idcard}
+    </select>
+    <select id="searchByUsername" resultType="com.example.testboot.entity.SUser"
+            parameterType="java.lang.String">
+        select * from s_user where username = #{username}
+    </select>
+    <select id="getsUser" resultMap="SUserMap" parameterType="java.lang.String">
+        select * from s_user where username = #{username}
+    </select>
+    <select id="login" resultType="com.example.testboot.entity.SUser" parameterType="java.lang.String">
+        select * from s_user where username=#{username}
+    </select>
+    <select id="getsUserInfo" resultType="com.example.testboot.entity.SUser" parameterType="java.lang.String">
+        select * from s_user where username=#{username}
+    </select>
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(*) from s_user
+    </select>
+    <select id="getTotal" resultType="java.lang.Integer">
+        select count(*) from s_user
+    </select>
+    <select id="getAllInfo" resultMap="SUserMap">
+        select * from s_user limit #{startIndex},#{pageSize}
+    </select>
+    <select id="searchByname" resultType="com.example.testboot.entity.SUser" parameterType="java.lang.String">
+        select * from s_user where name like concat('%',#{name},'%')
+    </select>
+
+
+</mapper>
+
